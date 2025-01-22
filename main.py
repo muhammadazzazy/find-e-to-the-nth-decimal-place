@@ -16,8 +16,8 @@ while True:
         exit()
 
     if not user_input.isnumeric():
-        print('Enter a whole number between 0 and 15!')
+        print('Please enter a whole number between 0 and 15...')
         continue
-    else:
-        n: int = int(user_input)
-        print(f"ℇ to the {n}th decimal place is {EULER[:n+2]}")
+    
+    n: int = int(user_input)
+    print(f"ℇ to the {n}th decimal place is {EULER[:n+2]}")
