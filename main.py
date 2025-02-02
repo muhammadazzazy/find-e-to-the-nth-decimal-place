@@ -1,6 +1,7 @@
 from math import e
 from sys import exit
 
+
 def main() -> None:
     LIMIT: int = 15
     print(f'Welcome to The ℇ Approximator!')
@@ -19,9 +20,10 @@ def main() -> None:
         if not user_input.isnumeric():
             print('Please enter a whole number between 0 and 15...')
             continue
-    
+
         n: int = int(user_input)
         print(f'ℇ to the {n}th decimal place is {EULER[:n+2]}')
+
 
 if __name__ == '__main__':
     main()
