@@ -23,4 +23,5 @@ def main() -> None:
         n: int = int(user_input)
         print(f'ℇ to the {n}th decimal place is {EULER[:n+2]}')
 
-main()
+if __name__ == '__main__':
+    main()
