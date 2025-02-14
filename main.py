@@ -1,5 +1,6 @@
 from math import e
 from sys import exit
+from word2number import w2n
 
 
 def main() -> None:
@@ -8,21 +9,38 @@ def main() -> None:
 
     EULER: str = str(e)
 
-    prompt: str = f'Enter the number of decimal places (up to {LIMIT}): '
+    error_message: str = f'Please enter a whole number between 0 and {LIMIT}...'
+    exit_message: str = 'Exiting program...'
 
     while True:
-        user_input: str = input(prompt)
+        try:
+            user_input: str = input(
+                f'Enter the number of decimal places (up to {LIMIT}): ')
 
-        if user_input == 'exit':
-            print('Thanks for trying my program!')
-            exit()
+            if user_input == 'exit':
+                print(exit_message)
+                exit()
 
-        if not user_input.isnumeric():
-            print('Please enter a whole number between 0 and 15...')
+            if user_input.isnumeric() and int(user_input) <= LIMIT:
+                n: int = int(user_input)
+            elif not user_input.isnumeric():
+                n: int = w2n.word_to_num(user_input)
+                if n > LIMIT:
+                    print(error_message)
+                    continue
+            else:
+                print(error_message)
+                continue
+
+        except ValueError:
+            print(error_message)
             continue
 
-        n: int = int(user_input)
-        print(f'ℇ to the {n}th decimal place is {EULER[:n+2]}')
+        except KeyboardInterrupt:
+            print(exit_message)
+            exit()
+
+        print(f'ℇ = {EULER[:n+2]} (to {n} d.p.)')
 
 
 if __name__ == '__main__':
